@@ -23,6 +23,9 @@ for size in xrange(100, 10000, 100):
 
 function runGnuplot() {
     echo '
+unset xtics
+unset ytics
+set size square
 set xlabel "Workload"
 set ylabel "Run time [sec]"
 plot "/tmp/complexity" using 1:2 title "Tim" with lines, "/tmp/complexity" using 1:3 title "Dumb" with lines
