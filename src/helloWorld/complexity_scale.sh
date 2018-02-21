@@ -9,19 +9,25 @@ def dumb_sort(workload):
     _ = list()
     for n in workload:
         bisect.insort(_, n)
-def sort_them(size):
+    return _
+def sort_them(size, func=sorted):
     workload = [random.randint(1, 0xFFFFFFF) for i in xrange(size)]
     s = time.time()
-    workload.sort()
+    func(workload)
     return time.time() - s
-print '#Size Time'
-for size in (1, 50, 500, 5000, 50000, 100000):
-    print '{} {}'.format(size, sort_them(size))
+print '#Size Time(Tim) Time(Dumb)'
+for size in xrange(100, 10000, 100):
+    print '{} {} {}'.format(size, sort_them(size), sort_them(size, func=dumb_sort))
 " > /tmp/complexity
 }
 
 function runGnuplot() {
-    gnuplot -p -e 'plot "/tmp/complexity" using 1:2 with lines'
+    echo '
+set xlabel "Workload"
+set ylabel "Run time [sec]"
+plot "/tmp/complexity" using 1:2 title "Tim" with lines, "/tmp/complexity" using 1:3 title "Dumb" with lines
+' > /tmp/_.gnuplot
+    gnuplot -p /tmp/_.gnuplot
 }
 
 function run() {
