@@ -14,7 +14,7 @@ I was looking for a simple, battery-included plotting utility to implement a sof
 
 - It is "hackable" via scripting but does not force the users to learn another programming language.
 
-This project is loosely based on the examples in [Gnuplot in Action, second edition|https://www.manning.com/books/gnuplot-in-action-second-edition].
+This project is loosely based on the examples in [Gnuplot in Action, second edition](https://www.manning.com/books/gnuplot-in-action-second-edition).
 
 To run all the examples, you are expected to use a Linux distribution that has:
 
