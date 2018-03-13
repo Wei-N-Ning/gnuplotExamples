@@ -10,11 +10,17 @@ linear()
 " > /tmp/_
 }
 
+# See In Action Book, P46 (75)
+# acsplines: approximation splines
+# using the 3rd parameter (inside ()):
+# the smaller the value, the weaker the influence each point has to the 
+# resulting spline;
+# compare 0.1 (noisy curve) and 0.00001 (almost straight curve)
 function runGnuplot() {
     echo "
 set key outside top center
 plot '/tmp/_' u 1:2 t 'data' w p pt 7 ps 1.1,\
-'' u 1:2:(1e-2) t 'aspline' s acs lt 1 lw 2
+'' u 1:2:(0.00001) t 'acsplines' s acs lt 1 lw 2
 " > /tmp/_.gnuplot
     gnuplot -p -c /tmp/_.gnuplot
 }
