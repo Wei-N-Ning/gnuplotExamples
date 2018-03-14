@@ -18,17 +18,27 @@ unset table
     gnuplot -p -c /tmp/_.gnuplot
 }
 
-# differencing curve over plain line chart
-# comma (,) is treated as an operator similar to C's way
-# therefore this expression:
-# (v=$2-u, u=$2, v) is evaluated from left to right
-# the final result is the value of v
+# expo smooth function:
+# s=a*\$2+(1-a)*s 
+
+# identfy outlier (if v > dRatio * standard deviation)
+# abs(\$2-s)>dRatio*STATS_ssd_y?\$2:NaN
+
+# estimate the typical fluctuation range:
+# upper bound: s+dRatio*STATS_ssd_y
+# lower bound: s-dRatio*STATS_ssd_y
 function display() {
     echo "
 set key outside top center
-u=0
+s=0
+a=0.25
+dRatio=2.0
+stats '/tmp/_.transformed' u 0:(s=a*\$2+(1-a)*s, $2-s) noout
 plot '/tmp/_.transformed' u 0:2 t 'original' w l lw 2,\
-'' u 0:(v=\$2-u, u=\$2, v) t 'differencing' w l lw 3
+'' u 0:(s=a*\$2+(1-a)*s) t 'expo smoothed' w l lt 3 lw 2,\
+'' u 0:(s=a*\$2+(1-a)*s, abs(\$2-s)>dRatio*STATS_ssd_y?\$2:NaN) t 'outliers' w p lc 2 pt 7,\
+'' u 0:(s=a*\$2+(1-a)*s, s+dRatio*STATS_ssd_y):(s-dRatio*STATS_ssd_y) t 'est. range of fluctuation' \
+    w filledc fs transparent solid 0.25 lc rgb 'dark-grey'
 " > /tmp/_.gnuplot
     gnuplot -p -c /tmp/_.gnuplot
 }
