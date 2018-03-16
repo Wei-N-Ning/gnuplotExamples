@@ -6,6 +6,7 @@ function runAll() {
     echo "" > ./README.md
     local _pwd=$( pwd )
     local relImgPath=
+    local relImgPathDst=
     local relSrcPath=
     local outPath=
     for n in $( find $1 -type f \
@@ -17,11 +18,17 @@ function runAll() {
     do
         outPath=`setPNGOutput ${n}`
         relImgPath=`generateName pngs ${n}`
+        relImgPathDst=`generateName ${PNG_OUTPUT_DIR} ${n}`
         echo ${outPath}
         echo ${relImgPath}
         if ( ! PNG_OUTPUT=${outPath} bash ${n} )
         then
             echo "failed to execute: " ${n}
+            exit 1
+        fi
+        if ( ! convert ${relImgPathDst} -resize 360x360 ${relImgPathDst} )
+        then
+            echo "failed to resize: " ${relImgPathDst}
             exit 1
         fi
         echo "
