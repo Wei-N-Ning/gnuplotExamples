@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     rm -f /tmp/_
     cp ./access_log /tmp/_
@@ -22,7 +25,7 @@ unset table
 # the larger the parameter a, the closer the expo curve fits to the original
 # one - compare a=0.2 and a=0.5
 function display() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 s=1
 hw(x,a) = a*x + (1-a)*s

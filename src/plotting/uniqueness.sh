@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -13,7 +16,7 @@ for i in xrange(200):
 # see: http://gnuplot.sourceforge.net/demo/pointsize.html
 # see: https://stackoverflow.com/questions/2689403/gnuplot-dot-plot-with-data-depending-dot-size
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside center top
 set xlabel 'Unique groups'
 set ylabel 'Average per group'

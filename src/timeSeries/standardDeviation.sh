@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     rm -f /tmp/_
     cp ./access_log /tmp/_
@@ -28,7 +31,7 @@ unset table
 # upper bound: s+dRatio*STATS_ssd_y
 # lower bound: s-dRatio*STATS_ssd_y
 function display() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 s=0
 a=0.25

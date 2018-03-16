@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     rm -f /tmp/_
     cp ./access_log /tmp/_
@@ -24,7 +27,7 @@ unset table
 # (v=$2-u, u=$2, v) is evaluated from left to right
 # the final result is the value of v
 function display() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 u=0
 plot '/tmp/_.transformed' u 0:2 t 'original' w l lw 2,\

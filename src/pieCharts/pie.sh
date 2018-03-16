@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -16,7 +19,7 @@ while pie > 0.0000001:
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set size square
 set angles degrees
 unset key

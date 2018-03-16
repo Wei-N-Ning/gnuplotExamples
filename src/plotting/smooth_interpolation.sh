@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -9,7 +12,7 @@ for i in xrange(10):
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 plot '/tmp/_' using 1:2 title 'Raw data' with points,\
 '' using 1:2 title 'mcsplines' with linespoints smooth mcsplines,\
 '' using 1:2 title 'csplines' smooth csplines,\

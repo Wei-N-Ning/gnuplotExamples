@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 # Gnuplot in Action, 2nd D24 (449)
 
 function generateData() {
@@ -14,7 +17,7 @@ for day in xrange(1, 31):
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 # do not draw legend
 unset key
 

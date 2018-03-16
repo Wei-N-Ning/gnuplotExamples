@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "" | awk '
 BEGIN {
@@ -11,7 +14,7 @@ BEGIN {
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 plot '/tmp/_' u 1:2 smooth frequency with boxes
 " > /tmp/_.gnuplot

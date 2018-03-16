@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -13,7 +16,7 @@ for i in xrange(50, 1270, step):
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 set ytics font ',5'
 set xtics font ',5'

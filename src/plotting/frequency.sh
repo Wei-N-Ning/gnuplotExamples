@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -9,7 +12,7 @@ for i in xrange(200):
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside center top
 set xlabel 'Values'
 set ylabel 'Frequency (number of hits)'

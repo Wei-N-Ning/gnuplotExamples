@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "
 # year title
@@ -9,7 +12,7 @@ function generateData() {
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 plot '/tmp/_' using 1 t 'Record with strings' w p pt 7 ps 1
 " > /tmp/_.gnuplot

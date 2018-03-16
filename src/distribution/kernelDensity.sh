@@ -4,6 +4,9 @@
 # smooth kernel function in gunplot
 # P302 (335) also introduced the math model of Gaussian kernel
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "" | awk '
 BEGIN {
@@ -15,7 +18,7 @@ BEGIN {
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 stats '/tmp/_' u 2 noout
 plot [][0:5] '/tmp/_' u 2:(1.0/STATS_records) t '0.005' smooth kdensity bandwidth 0.005,\

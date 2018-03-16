@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "
 1989 0.1
@@ -13,7 +16,7 @@ function generateData() {
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 reset
 set key at graph 0.24, 0.85 horizontal samplen 0.1
 set style data histogram

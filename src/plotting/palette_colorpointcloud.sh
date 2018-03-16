@@ -1,4 +1,7 @@
-#/bin/bash
+#!/usr/bin/env bash
+
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
 
 function generateData() {
     python -c "
@@ -20,7 +23,7 @@ for a in xrange(0, 360):
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set title 'Set color from palette (record: x, y, dist-to-origin)'
 set key off
 set palette defined ( 0 'blue', 1 'grey', 2 'red' )

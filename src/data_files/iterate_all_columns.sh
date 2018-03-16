@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateDataFile() {
     python -c "
 print 'AK74 M16 G36 FNFAL SIG552'
@@ -9,7 +12,7 @@ for i in xrange(1, 1000, 100):
 }
 
 function generateGnuplotScript() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key autotitle columnhead
 stats '/tmp/_'
 set key outside bottom center

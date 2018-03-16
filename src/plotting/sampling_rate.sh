@@ -1,13 +1,16 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 # set maximum number of samples
 # sampling rate has no effect when plotting data, unless I use smoothing
 # algorithms
 function plotFunctionWithCustomSamplingRate() {
-    echo '
+    echo "${PNG_OUTPUT}
 set samples 100
 plot sin(x) w lp
-' > /tmp/_.gnuplot
+" > /tmp/_.gnuplot
     gnuplot -p -c /tmp/_.gnuplot
 }
 

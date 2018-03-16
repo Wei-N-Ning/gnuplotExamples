@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "" | awk '
 BEGIN {
@@ -11,7 +14,7 @@ BEGIN {
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 stats '/tmp/_' u 2 noout
 plot [][0:100] '/tmp/_' u 2:(1.0/STATS_records * 100.0) \

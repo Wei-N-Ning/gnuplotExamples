@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
 
 function generateDataFile() {
     python -c "
@@ -24,7 +28,7 @@ for i in xrange(1, 1000, 100):
 }
 
 function generateGnuplotScript() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key autotitle columnhead
 set key outside bottom center
 plot '/tmp/_' u 1:2 w lp pt 7 ps 1,\

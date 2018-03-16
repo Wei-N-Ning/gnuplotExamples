@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function runPythonExec() {
     python -c "
 import bisect
@@ -22,7 +25,7 @@ for size in xrange(100, 10000, 100):
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 unset xtics
 unset ytics
 set size square

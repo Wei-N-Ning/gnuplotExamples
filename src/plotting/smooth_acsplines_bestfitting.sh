@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateDataFile() {
     python -c "
 import random
@@ -17,7 +20,7 @@ linear()
 # resulting spline;
 # compare 0.1 (noisy curve) and 0.00001 (almost straight curve)
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 plot '/tmp/_' u 1:2 t 'data' w p pt 7 ps 1.1,\
 '' u 1:2:(0.00001) t 'acsplines' s acs lt 1 lw 2

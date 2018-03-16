@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function createData() {
     if ! (python ./multiplot_datagen.py 100 > /tmp/_); then
         echo "failed to create data"
@@ -8,7 +11,7 @@ function createData() {
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 unset key
 set multiplot layout 2,2 margins 0.06,0.95,0.085,0.95 spacing 0.075,0.1
 

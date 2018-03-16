@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     python -c "
 import random
@@ -9,7 +12,7 @@ for idx, i in enumerate(xrange(500, 550, 1)):
 }
 
 function display() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 stats '/tmp/_' u 1:2 noout
 sum=0

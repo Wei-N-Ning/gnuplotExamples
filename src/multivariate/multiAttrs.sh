@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "
 #Model    Popularity   Performance  Value  Price
@@ -15,7 +18,7 @@ AMD/Ryzen-3/1200   5836    69   106   34
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 set style data histogram
 set style histogram cluster gap 1

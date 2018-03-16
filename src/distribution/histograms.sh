@@ -3,6 +3,9 @@
 # it uses a histogram to summarise the distribution of values
 # recall the similar plotting feature on Kibana
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function generateData() {
     echo "" | awk '
 BEGIN {
@@ -14,7 +17,7 @@ BEGIN {
 }
 
 function doPlot() {
-    echo "
+    echo "${PNG_OUTPUT}
 bin(x,s) = s*floor(x/s)
 binc(x,s) = s*(floor(x/s) + 0.5)
 set boxwidth 0.1

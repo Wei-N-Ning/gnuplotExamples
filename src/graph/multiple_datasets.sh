@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+source ../_helpers/outputUtils.sh
+PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
 function createMultiDatasetFile() {
     echo "
 # Hits
@@ -15,7 +18,7 @@ function createMultiDatasetFile() {
 }
 
 function runGnuplot() {
-    echo "
+    echo "${PNG_OUTPUT}
 set key outside top center
 plot '/tmp/_' index 0 using 1 t 'dataset index 0' w lp pt 7,\
 '' index 1 using 1 t 'dataset index 1' w lp pt 7
