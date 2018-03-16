@@ -3,8 +3,8 @@
 # it uses a histogram to summarise the distribution of values
 # recall the similar plotting feature on Kibana
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 function generateData() {
     echo "" | awk '

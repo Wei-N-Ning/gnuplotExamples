@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
-
 function generateData() {
     echo "
 1989 0.1
@@ -16,7 +13,7 @@ function generateData() {
 }
 
 function doPlot() {
-    echo "${PNG_OUTPUT}
+    echo "
 reset
 set key at graph 0.24, 0.85 horizontal samplen 0.1
 set style data histogram
@@ -45,5 +42,5 @@ p '/tmp/_' u 2 title '', \
 generateData
 doPlot
 
-convert -rotate 90 /tmp/test.png /tmp/final.png
-eog /tmp/final.png
+dirPath=${PNG_OUTPUT_DIR:-/tmp}
+convert -rotate 90 /tmp/test.png ${dirPath}/rankedData_horizontalRank.png

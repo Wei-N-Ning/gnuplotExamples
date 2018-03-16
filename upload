@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+source src/_helpers/outputUtils.sh
+
+function runAll() {
+    echo "" > ./README.md
+    local _pwd=$( pwd )
+    local relImgPath=
+    local relSrcPath=
+    local outPath=
+    for n in $( find $1 -type f \
+    -not -path "*git/*" \
+    -not -path "*_ex/*" \
+    -not -path "*_testdata/*" \
+    -not -path "*_helpers/*" \
+    -name "*.sh" )
+    do
+        outPath=`setPNGOutput ${n}`
+        relImgPath=`generateName pngs ${n}`
+        echo ${outPath}
+        echo ${relImgPath}
+        if ( ! PNG_OUTPUT=${outPath} bash ${n} )
+        then
+            echo "failed to execute: " ${n}
+            exit 1
+        fi
+        echo "
+[${n##*/src/}](src/${n##*/src/})
+
+![alt text](${relImgPath})
+
+" >> ./README.md
+    done
+    cd ${_pwd}
+}
+
+function run() {
+    runAll $1
+}
+
+function resetOutputDir() {
+    local _dir=$1
+    rm -rf ${_dir}
+    mkdir ${_dir}
+    export PNG_OUTPUT_DIR=${_dir}
+}
+
+function setTestdataDir() {
+    export TESTDATA_DIR=$( pwd )/src/_testdata
+}
+
+setTestdataDir
+resetOutputDir "/tmp/gnuplotPngs"
+run $( pwd )
+cp -rf ${PNG_OUTPUT_DIR}/* ./pngs

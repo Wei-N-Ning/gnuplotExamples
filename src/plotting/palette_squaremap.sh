@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 # Gnuplot in Action, 2nd D24 (449)
 

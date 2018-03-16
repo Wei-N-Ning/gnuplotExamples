@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 function generateData() {
     echo "

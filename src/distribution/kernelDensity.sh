@@ -4,8 +4,8 @@
 # smooth kernel function in gunplot
 # P302 (335) also introduced the math model of Gaussian kernel
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 function generateData() {
     echo "" | awk '

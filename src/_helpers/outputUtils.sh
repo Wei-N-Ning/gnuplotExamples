@@ -2,9 +2,10 @@
 
 # $1: source file path
 function setPNGOutput() {
+    local path=
     if [ -d "${PNG_OUTPUT_DIR}" ]
     then
-        local path=`generateName ${PNG_OUTPUT_DIR} $1`
+        path=`generateName ${PNG_OUTPUT_DIR} $1`
         printf "set terminal pngcairo\nset output '${path}'\n"
     fi
 }

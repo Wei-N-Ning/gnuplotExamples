@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
-
 function generateData() {
     rm -f /tmp/_
-    cp ./access_log /tmp/_
+    cp ${TESTDATA_DIR:-.}/access_log /tmp/_
 }
 
 function transformData() {

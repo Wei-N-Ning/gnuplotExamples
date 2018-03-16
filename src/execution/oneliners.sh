@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 # each call to gnuplot will spawn a new window
 # [-10:10][-2:2] sets the (min, max) range on the X and Y axis

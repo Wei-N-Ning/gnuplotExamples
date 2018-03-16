@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ../_helpers/outputUtils.sh
-PNG_OUTPUT=`setPNGOutput $( pwd )"/"$0`
+
+
 
 # the second call use abbreviations
 # note also the use of linecolor modifier
