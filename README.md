@@ -1,4 +1,35 @@
 
+Gnuplot Examples
+----------------
+
+This project is created for learning purpose.
+
+It started as a side project when I was looking for a simple, battery-included plotting utility to
+implement a software profiling toolkit at work.
+
+Gnuplot stood out of all the candidates because:
+
+- It creates decent 2D graphs.
+
+- It has the least amount of dependencies.
+I can either download and unzip the binary or build it from the source.
+After that it is fully functional (you can verify that by running all
+the example scripts below).
+
+- It uses text files as the main source of input data. This greatly simplifies the tooling.
+
+- It is hackable via scripting but does not force the users to learn another programming language.
+Matlab and Python's Metaplot are great but to entry-level users the learning curve can be steep.
+
+This project is loosely based on the examples in
+[Gnuplot in Action, second edition](https://www.manning.com/books/gnuplot-in-action-second-edition).
+
+All the examples were written and tested on Ubuntu 16.
+
+
+Script Gallery
+--------------
+
 
 [hello_world/complexity_scale.sh](src/hello_world/complexity_scale.sh)
 
