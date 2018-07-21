@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
         std::cout << i << \" \" <<
             smoothStep(i, 0.0, 1.0) << \" \" <<
             smoothStepPerlin(i, 0.0, 1.0) << \" \" <<
-            smoothStepQuartic(i, 0.0, 1.0) << \" \" <<
+            smoothStepQuintic(i, 0.0, 1.0) << \" \" <<
             cosine(i, 0.0, 1.0) <<
             std::endl;
     }
@@ -42,7 +42,7 @@ function doPlot() {
 set key outside top center
 plot [-0.1:1.1][-0.1:1.1] '/tmp/_.txt' u 1:2 t 'smooth step' w l,\
 '' u 1:3 t 'smooth step perlin' w l,\
-'' u 1:4 t 'smooth step quartic' w l,\
+'' u 1:4 t 'smooth step quintic' w l,\
 '' u 1:5 t 'cosine' w l
 " > /tmp/_.gnuplot
     gnuplot -p -c /tmp/_.gnuplot

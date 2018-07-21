@@ -30,7 +30,7 @@ inline T smoothStepPerlin(const R& i_t, const T& i_p0, const T& i_p1) {
 }
 
 template<class R, class T>
-inline T smoothStepQuartic(const R& i_t, const T& i_p0, const T& i_p1) {
+inline T smoothStepQuintic(const R& i_t, const T& i_p0, const T& i_p1) {
     if ( i_t <  i_p0 ) {
         return T(0);
     }
@@ -45,12 +45,4 @@ template<class R, class T>
 inline T cosine(const R& i_t, const T& i_p0, const T& i_p1) {
     T t0 = ( T(1) - cos( i_t* T(M_PI) ) ) / T(2);
     return i_p0 * (T(1)-t0) + i_p1*t0;
-}
-
-template<class R, class T>
-inline T quadratic(const R& i_t,
-                   const T& i_point0,
-                   const T& i_point1,
-                   const T& i_point2) {
-    return (1.0f - i_t) * (1.0f - i_t) * i_point0 + 2.0f * (1.0f - i_t) * i_t * i_point1 + i_t * i_t * i_point2;
 }
