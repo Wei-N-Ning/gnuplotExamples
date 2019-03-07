@@ -10,9 +10,9 @@ function generateData() {
 import random
 def f(v):
     return pow(v, 8) * 7.3 + 0.1
-for day in xrange(1, 31):
-    for machine in xrange(1, 21):
-        print day, machine if random.random() < 0.8 else 'NAN', f(random.random())
+for day in range(1, 31):
+    for machine in range(1, 21):
+        print(day, machine if random.random() < 0.8 else 'NAN', f(random.random()))
 " > /tmp/_
 }
 
